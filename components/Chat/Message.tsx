@@ -48,7 +48,7 @@ const Message = (props: MessageProps) => {
               }}
             ></div>
             {transactionHash &&
-              <Flex gap="4" align="center" className="pt-8 text-sm">
+              <Flex gap="4" align="center" className="pt-2 pb-8 text-sm">
                 <div>Transaction hash: {transactionHash}</div>
               </Flex>
             }
