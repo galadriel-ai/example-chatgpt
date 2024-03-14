@@ -15,7 +15,7 @@
 .chart-side-bar {
   @apply overflow-hidden w-64 z-10;
 
-  background-color: var(--color-background);
+  background-color: var(--background-color);
   transition: 0.5s;
 
   @apply max-md:absolute max-md:top-0 max-md:bottom-0   max-md:border-none max-md:w-0;
@@ -38,7 +38,7 @@
   background-color: var(--accent-a2);
 
   &:hover {
-    background-color: var(--accent-a3);
+    background-color: var(--accent);
   }
 }
 
@@ -50,7 +50,7 @@
   }
 
   &:hover {
-    background-color: var(--accent-a3);
+    background-color: var(--accent);
   }
 }
 

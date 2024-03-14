@@ -227,13 +227,15 @@ const Chat = (props: ChatProps, ref: any) => {
   })
 
   return (
-    <Flex direction="column" height="100%" className="relative" gap="3">
+    <Flex direction="column" height="100%" className="relative" gap="3"
+    style={{backgroundColor: "var(--background-color)"}}
+    >
       <Flex
         justify="between"
         align="center"
         py="3"
         px="4"
-        style={{backgroundColor: 'var(--gray-a2)'}}
+        style={{backgroundColor: "#114093"}}
       >
         <Heading size="4">{currentChatRef?.current?.persona?.name || 'None'}</Heading>
       </Flex>

@@ -20,7 +20,7 @@ export const Header = () => {
   return (
     <header
       className={cs('block shadow-sm sticky top-0 dark:shadow-gray-500 py-3 px-4 z-20')}
-      style={{ backgroundColor: 'var(--color-background)' }}
+      style={{ backgroundColor: 'var(--background-color)' }}
     >
       <Flex align="center" gap="3">
         <NextLink href="/">
@@ -34,25 +34,11 @@ export const Header = () => {
             size="2"
             radius="full"
             fallback={
-              <Link href="https://github.com/galadriel-ai/example-chatgpt">
+              <a href="https://github.com/galadriel-ai/example-chatgpt" target={"_blank"}>
                 <FaGithub />
-              </Link>
+              </a>
             }
           />
-          <Select.Root value={theme} onValueChange={setTheme}>
-            <Select.Trigger radius="full" />
-            <Select.Content>
-              <Select.Item value="light">
-                <FaRegSun />
-              </Select.Item>
-              <Select.Item value="dark">
-                <FaMoon />
-              </Select.Item>
-              <Select.Item value="system">
-                <FaAdjust />
-              </Select.Item>
-            </Select.Content>
-          </Select.Root>
         </Flex>
         <Tooltip content="Navigation">
           <IconButton
