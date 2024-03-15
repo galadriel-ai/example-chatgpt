@@ -8,6 +8,7 @@ import ContentEditable from 'react-contenteditable'
 import toast from 'react-hot-toast'
 import {AiOutlineClear, AiOutlineLoading3Quarters, AiOutlineUnorderedList} from 'react-icons/ai'
 import {FiSend} from 'react-icons/fi'
+import ProgressBar from "@/components/ProgressBar";
 import {ABI} from "@/types/network";
 import ChatContext from './chatContext'
 import {ChatMessage} from './interface'
@@ -41,6 +42,7 @@ const Chat = (props: ChatProps, ref: any) => {
   const {walletProvider} = useWeb3ModalProvider()
 
   const [isLoading, setIsLoading] = useState(false)
+  const [isTxLoading, setIsTxLoading] = useState(false)
 
   const conversationRef = useRef<ChatMessage[]>()
 
@@ -72,6 +74,7 @@ const Chat = (props: ChatProps, ref: any) => {
         conversation.current = [...conversation.current, {content: input, role: 'user'}]
         setMessage('')
         setIsLoading(true)
+        setIsTxLoading(true)
         try {
           const ethersProvider = new BrowserProvider(walletProvider)
           const signer = await ethersProvider.getSigner()
@@ -92,6 +95,7 @@ const Chat = (props: ChatProps, ref: any) => {
             const transactionResponse = await contract.addMessage(input, currentChatRef?.current?.chatId)
             receipt = await transactionResponse.wait()
           }
+          setIsTxLoading(false)
           if (receipt && receipt.status) {
             conversation.current = [...message, {
               content: input,
@@ -127,6 +131,7 @@ const Chat = (props: ChatProps, ref: any) => {
           console.error(error)
           toast.error(error.message)
           setIsLoading(false)
+          setIsTxLoading(false)
         }
       }
     },
@@ -228,7 +233,7 @@ const Chat = (props: ChatProps, ref: any) => {
 
   return (
     <Flex direction="column" height="100%" className="relative" gap="3"
-    style={{backgroundColor: "var(--background-color)"}}
+          style={{backgroundColor: "var(--background-color)"}}
     >
       <Flex
         justify="between"
@@ -249,12 +254,17 @@ const Chat = (props: ChatProps, ref: any) => {
           <Message key={index} message={item}/>
         ))}
         {currentMessage && <Message message={{content: currentMessage, role: 'assistant'}}/>}
+        {(isLoading && !isTxLoading) &&
+        <div className="pt-4">
+            <ProgressBar duration={10} message="Waiting for response..."/>
+          </div>
+        }
         <div ref={bottomOfChatRef}></div>
       </ScrollArea>
       <div className="px-4 pb-3">
         <Flex align="end" justify="between" gap="3" className="relative">
           <div className="rt-TextAreaRoot rt-r-size-1 rt-variant-surface flex-1 rounded-3xl chat-textarea"
-          style={{borderWidth: "1px"}}>
+               style={{borderWidth: "1px"}}>
             <ContentEditable
               innerRef={textAreaRef}
               style={{
