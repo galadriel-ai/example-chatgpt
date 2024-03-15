@@ -43,7 +43,7 @@ const ChatProvider = () => {
                   // className={"p-4 bg-[#00FF66] text-3xl text-black hover:bg-[#00b548] duration-200 " + FONT.className}
                   className={"p-4 bg-[#00FF66] text-3xl text-black hover:bg-[#00b548] duration-200"}
                 >
-                  Connect wallet to Battle
+                  Connect wallet to Chat
                 </button>
               </div>
               <div className="text-4xl pt-12">
