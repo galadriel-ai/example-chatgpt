@@ -45,6 +45,14 @@ const ChatProvider = () => {
                 >
                   Connect wallet to Chat
                 </button>
+                <div className="pt-4 underline">
+                  <a
+                    href="https://docs.galadriel.com/setting-up-a-wallet"
+                    target="_blank"
+                  >
+                    (Galadriel testnet)
+                  </a>
+                </div>
               </div>
               <div className="text-4xl pt-12">
                 To play, visit our <a href="https://discord.gg/4UuffUbkjb" target="_blank"
