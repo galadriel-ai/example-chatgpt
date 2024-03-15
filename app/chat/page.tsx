@@ -3,9 +3,9 @@ import {Suspense} from 'react'
 import {Flex} from '@radix-ui/themes'
 import {useWeb3Modal, useWeb3ModalAccount} from '@web3modal/ethers/react'
 import {Chat, ChatContext, ChatSideBar, useChatHook} from '@/components'
-import Navbar from "@/components/navbar";
 import Addresses from "@/components/addresses";
 import {BuildWithGaladriel} from "@/components/buildwithgaladriel";
+import Navbar from "@/components/navbar";
 
 const ChatProvider = () => {
   const provider = useChatHook()
