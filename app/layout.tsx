@@ -1,5 +1,5 @@
 import {Analytics} from '@vercel/analytics/react'
-import {Inter} from 'next/font/google'
+import {IBM_Plex_Mono} from 'next/font/google'
 import {Toaster} from 'react-hot-toast'
 import {Header} from '@/components/Header'
 import {Web3ModalProvider} from "@/context/Web3Modal";
@@ -20,12 +20,15 @@ export const metadata = {
   }
 }
 
-const inter = Inter({subsets: ['latin'], variable: '--font-inter'})
+// const inter = Inter({subsets: ['latin'], variable: '--font-inter'})
+const plexmono = IBM_Plex_Mono(
+  {weight: "400", subsets: ["latin"]},
+);
 
 export default function RootLayout({children}: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
-    <body className={inter.className}>
+    <body className={plexmono.className}>
     <ThemesProvider>
       <Header/>
       <Web3ModalProvider>

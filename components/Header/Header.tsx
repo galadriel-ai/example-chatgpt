@@ -1,14 +1,18 @@
 'use client'
 
-import {useCallback, useState} from 'react'
+import React, {useCallback, useState} from 'react'
 import {HamburgerMenuIcon} from '@radix-ui/react-icons'
 import {Avatar, Flex, Heading, IconButton, Tooltip} from '@radix-ui/themes'
+import {useWeb3ModalAccount} from '@web3modal/ethers/react'
 import cs from 'classnames'
+import Link from "next/link";
 import NextLink from 'next/link'
 import {FaGithub} from 'react-icons/fa'
 import {useTheme} from '../Themes'
 
 export const Header = () => {
+  const {isConnected} = useWeb3ModalAccount()
+
   const {theme, setTheme} = useTheme()
   const [, setShow] = useState(false)
 
@@ -16,6 +20,9 @@ export const Header = () => {
     setShow((state) => !state)
   }, [])
 
+  if (!isConnected) {
+    return <></>
+  }
   return (
     <header
       className={cs('block shadow-sm sticky top-0 dark:shadow-gray-500 py-3 px-4 z-20')}
@@ -29,7 +36,7 @@ export const Header = () => {
         </NextLink>
         <div
           style={{fontFamily: "PPNeueBit-Bold"}}
-          className="text-3xl"
+          className="text-3xl hidden lg:inline"
         >
           on-chain ChatGPT (contract:
           <a
@@ -42,6 +49,12 @@ export const Header = () => {
           )
         </div>
         <Flex align="center" gap="3" className="ml-auto">
+          <Link href="https://discord.gg/4UuffUbkjb" target="_blank"
+                className="px-3 py-2 rounded-md font-medium hover:underline hidden lg:inline">discord / faucet</Link>
+          <Link href="https://galadriel.com" target='_blank'
+                className="px-3 py-2 rounded-md font-medium hover:underline hidden lg:inline">about</Link>
+          <Link href="https://twitter.com/Galadriel_AI" target='_blank'
+                className="px-3 py-2 rounded-md font-medium hover:underline hidden lg:inline">x</Link>
           <Avatar
             color="gray"
             size="2"
