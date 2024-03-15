@@ -254,7 +254,7 @@ const Chat = (props: ChatProps, ref: any) => {
           <Message key={index} message={item}/>
         ))}
         {currentMessage && <Message message={{content: currentMessage, role: 'assistant'}}/>}
-        {(isLoading && !isTxLoading) &&
+        {isLoading &&
         <div className="pt-4">
             <ProgressBar duration={10} message="Waiting for response..."/>
           </div>
