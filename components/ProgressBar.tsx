@@ -35,7 +35,6 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({ duration, message }) =
     const interval = setInterval(() => {
       setProgress((prevProgress) => {
         const nextProgress = prevProgress + 1;
-        console.log(nextProgress)
         if (nextProgress > 100) {
           //clearInterval(interval);
           //return 100;
