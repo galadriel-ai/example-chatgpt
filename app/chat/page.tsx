@@ -3,6 +3,9 @@ import {Suspense} from 'react'
 import {Flex} from '@radix-ui/themes'
 import {useWeb3Modal, useWeb3ModalAccount} from '@web3modal/ethers/react'
 import {Chat, ChatContext, ChatSideBar, useChatHook} from '@/components'
+import Navbar from "@/components/navbar";
+import Addresses from "@/components/addresses";
+import {BuildWithGaladriel} from "@/components/buildwithgaladriel";
 
 const ChatProvider = () => {
   const provider = useChatHook()
@@ -11,27 +14,51 @@ const ChatProvider = () => {
   const {isConnected} = useWeb3ModalAccount()
   return (
     <ChatContext.Provider value={provider}>
-      <Flex style={{height: 'calc(100% - 56px)', backgroundColor: "var(--background-color)"}} className="relative">
-        {isConnected ?
+      {isConnected ?
+        <Flex style={{height: 'calc(100% - 56px)', backgroundColor: "var(--background-color)"}} className="relative">
           <>
             <ChatSideBar/>
             <div className="flex-1 relative">
               <Chat ref={provider.chatRef}/>
             </div>
           </>
-          :
-          <div className="flex flex-col items-center pt-12 text-center w-full gap-4">
-            <div className="text-2xl">Galadriel on-chain ChatGPT demo</div>
-            <div className="">Connect wallet to use the chat</div>
-            <button
-              onClick={() => open()}
-              className="mt-4 p-4 bg-[#00FF66] text-xl text-black hover:bg-[#00b548] duration-200"
+        </Flex>
+        :
+        <>
+          <Navbar/>
+          <main
+            className="flex min-h-screen flex-col items-center gap-20 p-2 lg:p-12 justify-between z-2 relative bg-[#0657E0]">
+            <div
+              className={"flex flex-col gap-6 text-center text-xl"}
+              style={{fontFamily: "PPMondwest-Regular"}}
             >
-              Connect wallet
-            </button>
-          </div>
-        }
-      </Flex>
+              <div className="text-7xl">
+                <div>
+                  On-chain ChatGPT built by Galadriel
+                </div>
+              </div>
+              <div className="pt-[100px]">
+                <button
+                  onClick={() => open()}
+                  // className={"p-4 bg-[#00FF66] text-3xl text-black hover:bg-[#00b548] duration-200 " + FONT.className}
+                  className={"p-4 bg-[#00FF66] text-3xl text-black hover:bg-[#00b548] duration-200"}
+                >
+                  Connect wallet to Battle
+                </button>
+              </div>
+              <div className="text-4xl pt-12">
+                To play, visit our <a href="https://discord.gg/4UuffUbkjb" target="_blank"
+                                      className="px-2 underline">Discord</a> to get testnet funds
+              </div>
+            </div>
+            <div
+              className={"flex w-full flex-col lg:flex-row lg:justify-between items-end text-xl p-4 lg:p-0"}>
+              <Addresses/>
+              <BuildWithGaladriel/>
+            </div>
+          </main>
+        </>
+      }
     </ChatContext.Provider>
   )
 }
