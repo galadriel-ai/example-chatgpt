@@ -49,7 +49,15 @@ const Message = (props: MessageProps) => {
             ></div>
             {transactionHash &&
               <Flex gap="4" align="center" className="pt-2 pb-8 text-sm">
-                <div>Transaction hash: {transactionHash}</div>
+                <div>Transaction hash:
+                  <a
+                    className="underline pl-2"
+                    href={`https://explorer.galadriel.com/transaction/${transactionHash}`}
+                    target="_blank"
+                  >
+                    {transactionHash}
+                  </a>
+                </div>
               </Flex>
             }
           </>

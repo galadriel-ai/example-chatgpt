@@ -9,7 +9,7 @@
   box-sizing: border-box; /* 1 */
   border-width: 0; /* 2 */
   border-style: solid; /* 2 */
-  border-color: theme('borderColor.DEFAULT', currentColor); /* 2 */
+  border-color: white; /* 2 */
 }
 
 ::before,
@@ -93,20 +93,38 @@ strong {
 2. Correct the odd `em` font sizing in all browsers.
 */
 
+@font-face {
+  font-family: 'PPMondwest-Regular';
+  src: url('/fonts/PPMondwest-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'PPNeueBit-Bold';
+  src: url('/fonts/PPNeueBit-Bold.otf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+h1, h2 {
+  font-family: PPNeueBit-Bold, sans-serif;
+}
+
 code,
 kbd,
 samp,
 pre {
   font-family: theme(
-    'fontFamily.mono',
-    ui-monospace,
-    SFMono-Regular,
-    Menlo,
-    Monaco,
-    Consolas,
-    'Liberation Mono',
-    'Courier New',
-    monospace
+                  'fontFamily.mono',
+                  ui-monospace,
+                  SFMono-Regular,
+                  Menlo,
+                  Monaco,
+                  Consolas,
+                  'Liberation Mono',
+                  'Courier New',
+                  monospace
   ); /* 1 */
   font-size: 1em; /* 2 */
 }
@@ -386,6 +404,9 @@ video {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+
+  --background-color: #002360;
+  --accent: #0657E0;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -428,9 +449,11 @@ body {
   @apply max-md:absolute  max-md:top-14 max-md:gap-0 max-md:left-0 max-md:right-0 max-md:px-1 max-md:flex-col max-md:items-start max-md:backdrop-blur-md max-md:bg-[--color-page-background] max-md:shadow-sm max-md:overflow-hidden;
   height: 0;
   transition: 0.5s;
+
   > a {
     @apply py-2;
   }
+
   &.show {
     @apply max-md:h-[168px];
   }

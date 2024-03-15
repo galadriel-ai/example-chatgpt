@@ -5,6 +5,7 @@
     img {
       @apply max-w-md max-md:max-w-full;
     }
+
     table {
       table-layout: fixed;
       width: 100%;
@@ -15,7 +16,7 @@
 .chart-side-bar {
   @apply overflow-hidden w-64 z-10;
 
-  background-color: var(--color-background);
+  background-color: var(--background-color);
   transition: 0.5s;
 
   @apply max-md:absolute max-md:top-0 max-md:bottom-0   max-md:border-none max-md:w-0;
@@ -35,10 +36,11 @@
 
 .bg-token-surface-primary {
   @apply flex gap-2 select-none items-center rounded-2xl px-3 py-2 duration-100;
-  background-color: var(--accent-a2);
+  //background-color: var(--accent-a2);
+  border: 1px solid white;
 
   &:hover {
-    background-color: var(--accent-a3);
+    background-color: var(--accent-a4);
   }
 }
 
@@ -46,11 +48,11 @@
   @apply flex gap-2 select-none items-center rounded-2xl px-3 py-2 duration-100 justify-between;
 
   &.active {
-    background-color: var(--accent-a4);
+    background-color: var(--accent);
   }
 
   &:hover {
-    background-color: var(--accent-a3);
+    background-color: var(--accent-a4);
   }
 }
 

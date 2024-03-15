@@ -11,7 +11,7 @@ const ChatProvider = () => {
   const {isConnected} = useWeb3ModalAccount()
   return (
     <ChatContext.Provider value={provider}>
-      <Flex style={{height: 'calc(100% - 56px)'}} className="relative">
+      <Flex style={{height: 'calc(100% - 56px)', backgroundColor: "var(--background-color)"}} className="relative">
         {isConnected ?
           <>
             <ChatSideBar/>
@@ -25,7 +25,7 @@ const ChatProvider = () => {
             <div className="">Connect wallet to use the chat</div>
             <button
               onClick={() => open()}
-              className="mt-4 p-4 bg-[#F3D7FF] text-xl text-black hover:bg-[#BCA5C5] duration-200"
+              className="mt-4 p-4 bg-[#00FF66] text-xl text-black hover:bg-[#00b548] duration-200"
             >
               Connect wallet
             </button>
