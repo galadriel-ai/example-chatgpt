@@ -253,7 +253,8 @@ const Chat = (props: ChatProps, ref: any) => {
       </ScrollArea>
       <div className="px-4 pb-3">
         <Flex align="end" justify="between" gap="3" className="relative">
-          <div className="rt-TextAreaRoot rt-r-size-1 rt-variant-surface flex-1 rounded-3xl chat-textarea">
+          <div className="rt-TextAreaRoot rt-r-size-1 rt-variant-surface flex-1 rounded-3xl chat-textarea"
+          style={{borderWidth: "1px"}}>
             <ContentEditable
               innerRef={textAreaRef}
               style={{
