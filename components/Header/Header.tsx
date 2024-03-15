@@ -5,10 +5,10 @@ import {HamburgerMenuIcon} from '@radix-ui/react-icons'
 import {Avatar, Flex, Heading, IconButton, Tooltip} from '@radix-ui/themes'
 import {useWeb3ModalAccount} from '@web3modal/ethers/react'
 import cs from 'classnames'
+import Link from "next/link";
 import NextLink from 'next/link'
 import {FaGithub} from 'react-icons/fa'
 import {useTheme} from '../Themes'
-import Link from "next/link";
 
 export const Header = () => {
   const {isConnected} = useWeb3ModalAccount()
