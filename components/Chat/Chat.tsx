@@ -113,12 +113,20 @@ const Chat = (props: ChatProps, ref: any) => {
                 const newMessages: ChatMessage[] = await getNewMessages(contract, chatId, conversation.current.length);
                 if (newMessages) {
                   const lastMessage = newMessages.at(-1)
-                  if (lastMessage && lastMessage.role == "assistant") {
-                    conversation.current = [
-                      ...conversation.current,
-                      {content: lastMessage.content, role: 'assistant'}
-                    ]
-                    break
+                  if (lastMessage) {
+                    if (lastMessage.role == "assistant") {
+                      conversation.current = [
+                        ...conversation.current,
+                        {content: lastMessage.content, role: "assistant"}
+                      ]
+                      break
+                    } else {
+                      // Simple solution to show function results, not ideal
+                      conversation.current = [
+                        ...conversation.current,
+                        {content: lastMessage.content, role: "user"}
+                      ]
+                    }
                   }
                 }
                 await new Promise(resolve => setTimeout(resolve, 2000))
@@ -255,7 +263,7 @@ const Chat = (props: ChatProps, ref: any) => {
         ))}
         {currentMessage && <Message message={{content: currentMessage, role: 'assistant'}}/>}
         {isLoading &&
-        <div className="pt-4">
+          <div className="pt-4">
             <ProgressBar duration={10} message="Waiting for response..."/>
           </div>
         }
