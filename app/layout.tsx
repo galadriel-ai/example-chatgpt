@@ -12,7 +12,7 @@ export const metadata = {
     default: 'Galadriel On-Chain ChatGPT',
     template: `%s - ChatGPT Lite`
   },
-  description: 'AI assistant powered by ChatGPT on Galadriel testnet',
+  description: 'AI assistant powered by ChatGPT on Galadriel devnet',
   icons: {
     icon: '/favicon.ico',
     shortcut: '/favicon-16x16.png',
