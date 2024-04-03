@@ -52,7 +52,7 @@ const Message = (props: MessageProps) => {
                 <div>Transaction hash:
                   <a
                     className="underline pl-2"
-                    href={`https://explorer.galadriel.com/transaction/${transactionHash}`}
+                    href={`https://explorer.galadriel.com/tx/${transactionHash}`}
                     target="_blank"
                   >
                     {transactionHash}
