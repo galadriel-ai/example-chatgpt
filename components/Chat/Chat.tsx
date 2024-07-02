@@ -168,15 +168,14 @@ const Chat = (props: ChatProps, ref: any) => {
     chatId: number,
     currentMessagesCount: number
   ): Promise<ChatMessage[]> {
-    const messages = await contract.getMessageHistoryContents(chatId)
-    const roles = await contract.getMessageHistoryRoles(chatId)
+    const messages = await contract.getMessageHistory(chatId)
 
     const newMessages: ChatMessage[] = []
     messages.forEach((message: any, i: number) => {
       if (i >= currentMessagesCount) {
         newMessages.push({
-          role: roles[i],
-          content: messages[i]
+          role: messages[i].role,
+          content: messages[i].content[0][1]
         })
       }
     })
