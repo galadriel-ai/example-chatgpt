@@ -5,6 +5,11 @@ export const ABI = [
         "internalType": "address",
         "name": "initialOracleAddress",
         "type": "address"
+      },
+      {
+        "internalType": "string",
+        "name": "knowledgeBaseCID",
+        "type": "string"
       }
     ],
     "stateMutability": "nonpayable",
@@ -92,12 +97,49 @@ export const ABI = [
         "type": "uint256"
       }
     ],
-    "name": "getMessageHistoryContents",
+    "name": "getMessageHistory",
     "outputs": [
       {
-        "internalType": "string[]",
+        "components": [
+          {
+            "internalType": "string",
+            "name": "role",
+            "type": "string"
+          },
+          {
+            "components": [
+              {
+                "internalType": "string",
+                "name": "contentType",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "value",
+                "type": "string"
+              }
+            ],
+            "internalType": "struct IOracle.Content[]",
+            "name": "content",
+            "type": "tuple[]"
+          }
+        ],
+        "internalType": "struct IOracle.Message[]",
         "name": "",
-        "type": "string[]"
+        "type": "tuple[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "knowledgeBase",
+    "outputs": [
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
       }
     ],
     "stateMutability": "view",
@@ -107,19 +149,23 @@ export const ABI = [
     "inputs": [
       {
         "internalType": "uint256",
-        "name": "chatId",
+        "name": "runId",
         "type": "uint256"
-      }
-    ],
-    "name": "getMessageHistoryRoles",
-    "outputs": [
+      },
       {
         "internalType": "string[]",
-        "name": "",
+        "name": "documents",
         "type": "string[]"
+      },
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
       }
     ],
-    "stateMutability": "view",
+    "name": "onOracleKnowledgeBaseQueryResponse",
+    "outputs": [],
+    "stateMutability": "nonpayable",
     "type": "function"
   },
   {
@@ -136,7 +182,7 @@ export const ABI = [
       },
       {
         "internalType": "string",
-        "name": "errorMessage",
+        "name": "",
         "type": "string"
       }
     ],
@@ -183,7 +229,7 @@ export const ABI = [
     "outputs": [
       {
         "internalType": "uint256",
-        "name": "i",
+        "name": "",
         "type": "uint256"
       }
     ],
